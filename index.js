@@ -1,17 +1,12 @@
 const canvas = document.querySelector('canvas')
 const c = canvas.getContext('2d')
 
-canvas.width = 1024
-canvas.height = 576
+canvas.width = 1366
+canvas.height = 768
 
 const collisionsMap = []
-for (let i = 0; i < collisions.length; i += 70) {
-  collisionsMap.push(collisions.slice(i, 70 + i))
-}
-
-const battleZonesMap = []
-for (let i = 0; i < battleZonesData.length; i += 70) {
-  battleZonesMap.push(battleZonesData.slice(i, 70 + i))
+for (let i = 0; i < collisions.length; i += 114) {
+  collisionsMap.push(collisions.slice(i, 114 + i))
 }
 
 const charactersMap = []
@@ -21,14 +16,14 @@ for (let i = 0; i < charactersMapData.length; i += 70) {
 console.log(charactersMap)
 
 const boundaries = []
-const offset = {
+const offset = { // Modifica-lo afetará parâmetros, como posição inicial do player (Deslocamento)
   x: -735,
   y: -650
 }
 
 collisionsMap.forEach((row, i) => {
   row.forEach((symbol, j) => {
-    if (symbol === 1025)
+    if (symbol === 1025) // Código da Colisão
       boundaries.push(
         new Boundary({
           position: {
@@ -42,19 +37,6 @@ collisionsMap.forEach((row, i) => {
 
 const battleZones = []
 
-battleZonesMap.forEach((row, i) => {
-  row.forEach((symbol, j) => {
-    if (symbol === 1025)
-      battleZones.push(
-        new Boundary({
-          position: {
-            x: j * Boundary.width + offset.x,
-            y: i * Boundary.height + offset.y
-          }
-        })
-      )
-  })
-})
 
 const characters = []
 const villagerImg = new Image()
@@ -98,7 +80,7 @@ charactersMap.forEach((row, i) => {
             hold: 60
           },
           scale: 3,
-          dialogue: ['My bones hurt.']
+          dialogue: ['Larisso: OMAGAAAAAA.']
         })
       )
     }
@@ -290,7 +272,7 @@ function animate() {
             ...boundary,
             position: {
               x: boundary.position.x,
-              y: boundary.position.y + 3
+              y: boundary.position.y + 3 
             }
           }
         })
@@ -322,8 +304,8 @@ function animate() {
           rectangle2: {
             ...boundary,
             position: {
-              x: boundary.position.x + 3,
-              y: boundary.position.y
+              x: boundary.position.x + 3, // + 3 -> Espécie de prevenção para colisões
+              y: boundary.position.y 
             }
           }
         })
@@ -356,7 +338,7 @@ function animate() {
             ...boundary,
             position: {
               x: boundary.position.x,
-              y: boundary.position.y - 3
+              y: boundary.position.y - 23 
             }
           }
         })
@@ -405,7 +387,7 @@ function animate() {
       })
   }
 }
-// animate()
+animate()
 
 let lastKey = ''
 window.addEventListener('keydown', (e) => {
