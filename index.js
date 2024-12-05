@@ -9,17 +9,11 @@ for (let i = 0; i < collisions.length; i += 100) {
   collisionsMap.push(collisions.slice(i, 100 + i))
 }
 
-const charactersMap = []
-for (let i = 0; i < charactersMapData.length; i += 100) {
-  charactersMap.push(charactersMapData.slice(i, 100 + i))
-}
-console.log(charactersMap)
-
 const boundaries = []
 const offset = {
   // Modifica-lo afetará parâmetros, como posição inicial do player (Deslocamento)
-  x: -735,
-  y: -650
+  x: -405,
+  y: -3400
 }
 
 collisionsMap.forEach((row, i) => {
@@ -46,7 +40,7 @@ villagerImg.src = './img/villager/Idle.png'
 const oldManImg = new Image()
 oldManImg.src = './img/oldMan/Idle.png'
 
-charactersMap.forEach((row, i) => {
+collisionsMap.forEach((row, i) => {
   row.forEach((symbol, j) => {
     // 1026 === villager
     if (symbol === 1026) {
@@ -63,7 +57,7 @@ charactersMap.forEach((row, i) => {
           },
           scale: 3,
           animate: true,
-          dialogue: ['...', 'Hey mister, have you seen my Doggochu?']
+          dialogue: ['...', 'Prazer, barbaro ! Aqui e Troia, lar dos maiores guerreiros !']
         })
       )
     }
