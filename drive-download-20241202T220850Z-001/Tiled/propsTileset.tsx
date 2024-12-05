@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.10" tiledversion="1.11.0" name="propsTileset" tilewidth="32" tileheight="32" tilecount="256" columns="16">
- <image source="drive-download-20241202T220850Z-001/Tiled/Castle/Texture/TX Props.png" width="512" height="512"/>
+<tileset version="1.10" tiledversion="1.11.0" name="propsTileset" tilewidth="12" tileheight="12" tilecount="1764" columns="42">
+ <image source="Castle/Texture/TX Props.png" width="512" height="512"/>
 </tileset>

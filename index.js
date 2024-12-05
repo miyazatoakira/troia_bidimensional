@@ -5,25 +5,27 @@ canvas.width = 1366
 canvas.height = 768
 
 const collisionsMap = []
-for (let i = 0; i < collisions.length; i += 114) {
-  collisionsMap.push(collisions.slice(i, 114 + i))
+for (let i = 0; i < collisions.length; i += 100) {
+  collisionsMap.push(collisions.slice(i, 100 + i))
 }
 
 const charactersMap = []
-for (let i = 0; i < charactersMapData.length; i += 70) {
-  charactersMap.push(charactersMapData.slice(i, 70 + i))
+for (let i = 0; i < charactersMapData.length; i += 100) {
+  charactersMap.push(charactersMapData.slice(i, 100 + i))
 }
 console.log(charactersMap)
 
 const boundaries = []
-const offset = { // Modifica-lo afetará parâmetros, como posição inicial do player (Deslocamento)
+const offset = {
+  // Modifica-lo afetará parâmetros, como posição inicial do player (Deslocamento)
   x: -735,
   y: -650
 }
 
 collisionsMap.forEach((row, i) => {
   row.forEach((symbol, j) => {
-    if (symbol === 1025) // Código da Colisão
+    if (symbol === 1025)
+      // Código da Colisão
       boundaries.push(
         new Boundary({
           position: {
@@ -36,7 +38,6 @@ collisionsMap.forEach((row, i) => {
 })
 
 const battleZones = []
-
 
 const characters = []
 const villagerImg = new Image()
@@ -272,7 +273,7 @@ function animate() {
             ...boundary,
             position: {
               x: boundary.position.x,
-              y: boundary.position.y + 3 
+              y: boundary.position.y + 3
             }
           }
         })
@@ -305,7 +306,7 @@ function animate() {
             ...boundary,
             position: {
               x: boundary.position.x + 3, // + 3 -> Espécie de prevenção para colisões
-              y: boundary.position.y 
+              y: boundary.position.y
             }
           }
         })
@@ -338,7 +339,7 @@ function animate() {
             ...boundary,
             position: {
               x: boundary.position.x,
-              y: boundary.position.y - 23 
+              y: boundary.position.y - 3
             }
           }
         })
