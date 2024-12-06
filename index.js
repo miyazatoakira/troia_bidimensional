@@ -4,6 +4,11 @@ const c = canvas.getContext('2d')
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
+window.addEventListener('resize', () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+
 const collisionsMap = []
 for (let i = 0; i < collisions.length; i += 100) {
   collisionsMap.push(collisions.slice(i, 100 + i))
@@ -34,11 +39,23 @@ collisionsMap.forEach((row, i) => {
 const battleZones = []
 
 const characters = []
-const villagerImg = new Image()
-villagerImg.src = './img/villager/Idle.png'
+const villagerImg = new Image();
+villagerImg.src = './img/villager/Idle.png';
 
-const oldManImg = new Image()
-oldManImg.src = './img/oldMan/Idle.png'
+const oldManImg = new Image();
+oldManImg.src = './img/oldMan/Idle.png';
+
+const ferreiroImg = new Image();
+ferreiroImg.src = './img/ferreiro/ferreiro.png';
+
+// const militarImg = new Image();
+// militarImg.src = './img/militar/militar.png';
+
+// const faroImg = new Image();
+// faroImg.src = './img/faro/faro.png';
+
+const artesaoImg = new Image();
+artesaoImg.src = './img/artesao/Idle.png';
 
 collisionsMap.forEach((row, i) => {
   row.forEach((symbol, j) => {
@@ -76,6 +93,80 @@ collisionsMap.forEach((row, i) => {
           },
           scale: 3,
           dialogue: ['Ah, bem-vindo jovem Heleno. Vejo que veio conhecer a grandiosa Tróia. Permita-me guiá-lo com minhas palavras, pois estes caminhos têm história que poucos podem contar. <br><br> Comece pela praça central, onde o mercado está sempre vivo - ali você verá o coração do nosso povo.', 'Depois, siga para a direção Norte da cidade, onde estará a acrópole da cidade. Lá, no ponto mais alto da cidade, você verá a residência do rei e o verdadeiro símbolo da nossa força. É um lugar que faz até o mais forte lembrar dos deuses.', 'Tróia é mais do que uma cidade, jovem. É um testemunho de resistência e grandeza. <br><br>Que seus passos por aqui sejam leves e suas memórias, eternas !']
+        })
+      )
+    }
+
+    // 1047 == Ferreiro
+    else if (symbol === 1047) {
+      characters.push(
+        new Character({
+          position: {
+            x: j * Boundary.width + offset.x,
+            y: i * Boundary.height + offset.y
+          },
+          image: ferreiroImg,
+          frames: {
+            max: 4,
+            hold: 60
+          },
+          scale: 3,
+          dialogue: ['hihia, sou ferreiro']
+        })
+      )
+    }
+    // 1035 == Militar
+    // else if (symbol === 1035) {
+    //   characters.push(
+    //     new Character({
+    //       position: {
+    //         x: j * Boundary.width + offset.x,
+    //         y: i * Boundary.height + offset.y
+    //       },
+    //       image: militarImg,
+    //       frames: {
+    //         max: 4,
+    //         hold: 60
+    //       },
+    //       scale: 3,
+    //       animate: true,
+    //       dialogue: ['hihia, sou militar !']
+    //     })
+    //   )
+    // }
+    // 1070 == Faro
+    // else if (symbol === 1070) {
+    //   characters.push(
+    //     new Character({
+    //       position: {
+    //         x: j * Boundary.width + offset.x,
+    //         y: i * Boundary.height + offset.y
+    //       },
+    //       image: faroImg,
+    //       frames: {
+    //         max: 4,
+    //         hold: 60
+    //       },
+    //       scale: 3,
+    //       dialogue: ['hihia, sou faro !']
+    //     })
+    //   )
+    // }
+    // 1099 == Artesão
+    else if(symbol === 1099){
+      characters.push(
+        new Character({
+          position: {
+            x: j * Boundary.width + offset.x,
+            y: i * Boundary.height + offset.y
+          },
+          image: artesaoImg,
+          frames: {
+            max: 4,
+            hold: 60
+          },
+          scale: 3,
+          dialogue: ['hihia, sou Vendedor artesão !']
         })
       )
     }
