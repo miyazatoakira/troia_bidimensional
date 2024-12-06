@@ -1,5 +1,7 @@
 <html lang="pt-br">
+
 <head>
+  <meta charset="UTF-8">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
@@ -34,7 +36,7 @@
       position: relative;
       height: 50px;
       width: 40px;
-    
+
       padding: 0 30px;
       border: 2px solid #000;
       background: #e8e8e8;
@@ -130,9 +132,24 @@
       <span> D
       </span>
     </button>
-    <h4 style="margin-left: 38%;">MOVE</h4>
+    <h4 style="margin-left: 38%;">MOVER</h4>
+
   </div>
-  
+
+  <div id="interactCommands" style="position: absolute; 
+  top: 2%; 
+  right: 1%; 
+  color: white; 
+  z-index: 10;">
+  <button id="help" style="width: 100px;">
+    <span> Space </span>
+  </button>
+  <h4 style="margin-left: -15%;">INTERAGIR</h4>
+</div>
+
+
+
+
   <canvas></canvas>
   <div id="characterDialogueBox" style="
       background-color: white;

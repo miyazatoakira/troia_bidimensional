@@ -13,7 +13,7 @@ const boundaries = []
 const offset = {
   // Modifica-lo afetará parâmetros, como posição inicial do player (Deslocamento)
   x: -405,
-  y: -3400
+  y: -4700
 }
 
 collisionsMap.forEach((row, i) => {
@@ -57,7 +57,7 @@ collisionsMap.forEach((row, i) => {
           },
           scale: 3,
           animate: true,
-          dialogue: ['...', 'Prazer, barbaro ! Aqui e Troia, lar dos maiores guerreiros !']
+          dialogue: ['...', 'Ei, forasteiro ! O que faz aqui, hein ?', 'Deixe-me adivinhar, você é grego?<br> Veio admirar nossa porque nunca viu algo tão grandioso na sua terra miserável ?', 'Não está pensando em trazer outro "presente" como aquele cavalo ridículo ?<br Pois fique sabendo que, desta vez, nem chegaria à praça ! Aqui é Tróia, meu caro hahahahaha', 'Vai conhecer a cidade ? Ótimo, só não se perca nos mercados nem tente subir a Acrópole sem permissão. Se passar pelo templo de Atena, baixe a cabeça e mostre respeito, ou até os deuses vão rir de você.']
         })
       )
     }
@@ -75,7 +75,7 @@ collisionsMap.forEach((row, i) => {
             hold: 60
           },
           scale: 3,
-          dialogue: ['Larisso: OMAGAAAAAA.']
+          dialogue: ['Ah, bem-vindo jovem forasteiro. Vejo que veio conhecer a grandiosa Tróia. Permita-me guiá-lo com minhas palavras, pois estes caminhos têm história que poucos podem contar. <br> Comece pela praça central, onde o mercado está sempre vivo - ali você verá o coração do nosso povo.', 'Depois, siga para a direção Norte da cidade, onde estará a acrópole da cidade. Lá, no ponto mais alto da cidade, você verá a residência do rei e o verdadeiro símbolo da nossa força. É um lugar que faz até o mais forte lembrar dos deuses.', 'Tróia é mais do que uma cidade, jovem. É um testemunho de resistência e grandeza. Que seus passos por aqui sejam leves e suas memórias, eternas !']
         })
       )
     }
@@ -188,65 +188,6 @@ function animate() {
 
   let moving = true
   player.animate = false
-
-  if (battle.initiated) return
-
-  // activate a battle
-  if (keys.w.pressed || keys.a.pressed || keys.s.pressed || keys.d.pressed) {
-    for (let i = 0; i < battleZones.length; i++) {
-      const battleZone = battleZones[i]
-      const overlappingArea =
-        (Math.min(
-          player.position.x + player.width,
-          battleZone.position.x + battleZone.width
-        ) -
-          Math.max(player.position.x, battleZone.position.x)) *
-        (Math.min(
-          player.position.y + player.height,
-          battleZone.position.y + battleZone.height
-        ) -
-          Math.max(player.position.y, battleZone.position.y))
-      if (
-        rectangularCollision({
-          rectangle1: player,
-          rectangle2: battleZone
-        }) &&
-        overlappingArea > (player.width * player.height) / 2 &&
-        Math.random() < 0.01
-      ) {
-        // deactivate current animation loop
-        window.cancelAnimationFrame(animationId)
-
-        audio.Map.stop()
-        audio.initBattle.play()
-        audio.battle.play()
-
-        battle.initiated = true
-        gsap.to('#overlappingDiv', {
-          opacity: 1,
-          repeat: 3,
-          yoyo: true,
-          duration: 0.4,
-          onComplete() {
-            gsap.to('#overlappingDiv', {
-              opacity: 1,
-              duration: 0.4,
-              onComplete() {
-                // activate a new animation loop
-                initBattle()
-                animateBattle()
-                gsap.to('#overlappingDiv', {
-                  opacity: 0,
-                  duration: 0.4
-                })
-              }
-            })
-          }
-        })
-        break
-      }
-    }
-  }
 
   if (keys.w.pressed && lastKey === 'w') {
     player.animate = true
