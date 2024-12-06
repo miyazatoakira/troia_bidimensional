@@ -1,8 +1,8 @@
 const canvas = document.querySelector('canvas')
 const c = canvas.getContext('2d')
 
-canvas.width = 1366
-canvas.height = 768
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
 const collisionsMap = []
 for (let i = 0; i < collisions.length; i += 100) {
@@ -57,7 +57,7 @@ collisionsMap.forEach((row, i) => {
           },
           scale: 3,
           animate: true,
-          dialogue: ['...', 'Ei, forasteiro ! O que faz aqui, hein ?', 'Deixe-me adivinhar, você é grego?<br> Veio admirar nossa porque nunca viu algo tão grandioso na sua terra miserável ?', 'Não está pensando em trazer outro "presente" como aquele cavalo ridículo ?<br Pois fique sabendo que, desta vez, nem chegaria à praça ! Aqui é Tróia, meu caro hahahahaha', 'Vai conhecer a cidade ? Ótimo, só não se perca nos mercados nem tente subir a Acrópole sem permissão. Se passar pelo templo de Atena, baixe a cabeça e mostre respeito, ou até os deuses vão rir de você.']
+          dialogue: ['...', 'Ei, forasteiro ! O que faz aqui, hein ?', 'Deixe-me adivinhar, você é grego?<br> Veio admirar nossa cidade porque nunca viu algo tão grandioso na sua terra miserável ?', 'Não está pensando em trazer outro "presente" como aquele cavalo ridículo ?<br Pois fique sabendo que, desta vez, nem chegaria à praça ! Aqui é Tróia, meu caro hahahahaha', 'Vai conhecer a cidade ? Ótimo, só não se perca nos mercados nem tente subir a Acrópole sem permissão. Se passar pelo templo de Atena, baixe a cabeça e mostre respeito, ou até os deuses vão rir de você.']
         })
       )
     }
