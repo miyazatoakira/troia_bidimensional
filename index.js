@@ -48,8 +48,8 @@ oldManImg.src = './img/oldMan/Idle.png';
 const ferreiroImg = new Image();
 ferreiroImg.src = './img/ferreiro/ferreiro.png';
 
-// const militarImg = new Image();
-// militarImg.src = './img/militar/militar.png';
+const militarImg = new Image();
+militarImg.src = './img/militar/militar.png';
 
 // const faroImg = new Image();
 // faroImg.src = './img/faro/faro.png';
@@ -116,24 +116,23 @@ collisionsMap.forEach((row, i) => {
       )
     }
     // 1035 == Militar
-    // else if (symbol === 1035) {
-    //   characters.push(
-    //     new Character({
-    //       position: {
-    //         x: j * Boundary.width + offset.x,
-    //         y: i * Boundary.height + offset.y
-    //       },
-    //       image: militarImg,
-    //       frames: {
-    //         max: 4,
-    //         hold: 60
-    //       },
-    //       scale: 3,
-    //       animate: true,
-    //       dialogue: ['hihia, sou militar !']
-    //     })
-    //   )
-    // }
+    else if (symbol === 1035) {
+      characters.push(
+        new Character({
+          position: {
+            x: j * Boundary.width + offset.x,
+            y: i * Boundary.height + offset.y
+          },
+          image: militarImg,
+          frames: {
+            max: 4,
+            hold: 60
+          },
+          scale: 3,
+          dialogue: ['hihia, sou militar !']
+        })
+      )
+    }
     // 1070 == Faro
     // else if (symbol === 1070) {
     //   characters.push(
