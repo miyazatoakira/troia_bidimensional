@@ -57,7 +57,7 @@ collisionsMap.forEach((row, i) => {
           },
           scale: 3,
           animate: true,
-          dialogue: ['...', 'Ei, forasteiro ! O que faz aqui, hein ?', 'Deixe-me adivinhar, você é grego?<br> Veio admirar nossa cidade porque nunca viu algo tão grandioso na sua terra miserável ?', 'Não está pensando em trazer outro "presente" como aquele cavalo ridículo ?<br Pois fique sabendo que, desta vez, nem chegaria à praça ! Aqui é Tróia, meu caro hahahahaha', 'Vai conhecer a cidade ? Ótimo, só não se perca nos mercados nem tente subir a Acrópole sem permissão. Se passar pelo templo de Atena, baixe a cabeça e mostre respeito, ou até os deuses vão rir de você.']
+          dialogue: ['...', 'Ei, forasteiro ! O que faz aqui, hein ?', 'Deixe-me adivinhar, você é Heleno?<br><br> Veio admirar nossa cidade porque nunca viu algo tão grandioso na sua terra miserável ?', 'Não está pensando em trazer outro "presente" como aquele cavalo ridículo ?<br><br> Pois fique sabendo que, desta vez, nem chegaria à praça ! Aqui é Tróia, meu caro hahahahaha', 'Vai conhecer a cidade ? Ótimo, só não se perca nos mercados nem tente subir a Acrópole sem permissão. Se passar pelo templo de Atena, baixe a cabeça e mostre respeito, ou até os deuses vão rir de você.']
         })
       )
     }
@@ -75,7 +75,7 @@ collisionsMap.forEach((row, i) => {
             hold: 60
           },
           scale: 3,
-          dialogue: ['Ah, bem-vindo jovem forasteiro. Vejo que veio conhecer a grandiosa Tróia. Permita-me guiá-lo com minhas palavras, pois estes caminhos têm história que poucos podem contar. <br> Comece pela praça central, onde o mercado está sempre vivo - ali você verá o coração do nosso povo.', 'Depois, siga para a direção Norte da cidade, onde estará a acrópole da cidade. Lá, no ponto mais alto da cidade, você verá a residência do rei e o verdadeiro símbolo da nossa força. É um lugar que faz até o mais forte lembrar dos deuses.', 'Tróia é mais do que uma cidade, jovem. É um testemunho de resistência e grandeza. Que seus passos por aqui sejam leves e suas memórias, eternas !']
+          dialogue: ['Ah, bem-vindo jovem Heleno. Vejo que veio conhecer a grandiosa Tróia. Permita-me guiá-lo com minhas palavras, pois estes caminhos têm história que poucos podem contar. <br><br> Comece pela praça central, onde o mercado está sempre vivo - ali você verá o coração do nosso povo.', 'Depois, siga para a direção Norte da cidade, onde estará a acrópole da cidade. Lá, no ponto mais alto da cidade, você verá a residência do rei e o verdadeiro símbolo da nossa força. É um lugar que faz até o mais forte lembrar dos deuses.', 'Tróia é mais do que uma cidade, jovem. É um testemunho de resistência e grandeza. <br><br>Que seus passos por aqui sejam leves e suas memórias, eternas !']
         })
       )
     }
