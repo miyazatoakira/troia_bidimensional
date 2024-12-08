@@ -4,10 +4,6 @@ const c = canvas.getContext('2d')
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-window.addEventListener('resize', () => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-});
 
 const collisionsMap = []
 for (let i = 0; i < collisions.length; i += 100) {
@@ -36,7 +32,6 @@ collisionsMap.forEach((row, i) => {
   })
 })
 
-const battleZones = []
 
 const characters = []
 const villagerImg = new Image();
@@ -48,8 +43,8 @@ oldManImg.src = './img/oldMan/Idle.png';
 const ferreiroImg = new Image();
 ferreiroImg.src = './img/ferreiro/ferreiro.png';
 
-// const militarImg = new Image();
-// militarImg.src = './img/militar/militar.png';
+const militarImg = new Image();
+militarImg.src = './img/militar/militar.png';
 
 // const faroImg = new Image();
 // faroImg.src = './img/faro/faro.png';
@@ -116,24 +111,24 @@ collisionsMap.forEach((row, i) => {
       )
     }
     // 1035 == Militar
-    // else if (symbol === 1035) {
-    //   characters.push(
-    //     new Character({
-    //       position: {
-    //         x: j * Boundary.width + offset.x,
-    //         y: i * Boundary.height + offset.y
-    //       },
-    //       image: militarImg,
-    //       frames: {
-    //         max: 4,
-    //         hold: 60
-    //       },
-    //       scale: 3,
-    //       animate: true,
-    //       dialogue: ['hihia, sou militar !']
-    //     })
-    //   )
-    // }
+    else if (symbol === 1035) {
+      characters.push(
+        new Character({
+          position: {
+            x: j * Boundary.width + offset.x,
+            y: i * Boundary.height + offset.y
+          },
+          image: militarImg,
+          frames: {
+            max: 4,
+            hold: 297
+          },
+          animate:true,
+          scale: 3,
+          dialogue: ['...', 'Olá Heleno.']
+        })
+      )
+    }
     // 1070 == Faro
     // else if (symbol === 1070) {
     //   characters.push(
@@ -204,8 +199,8 @@ playerRightImage.src = './img/playerRight.png'
 
 const player = new Sprite({
   position: {
-    x: canvas.width / 2 - 192 / 4 / 2,
-    y: canvas.height / 2 - 68 / 2
+    x: (canvas.width / 2) - (192 / 4 / 2),
+    y: (canvas.height / 2) - (68 / 2)
   },
   image: playerDownImage,
   frames: {
@@ -218,7 +213,8 @@ const player = new Sprite({
     right: playerRightImage,
     down: playerDownImage
   }
-})
+});
+
 
 const background = new Sprite({
   position: {
@@ -255,21 +251,16 @@ const movables = [
   background,
   ...boundaries,
   foreground,
-  ...battleZones,
   ...characters
 ]
 const renderables = [
   background,
   ...boundaries,
-  ...battleZones,
   ...characters,
   player,
   foreground
 ]
 
-const battle = {
-  initiated: false
-}
 
 function animate() {
   const animationId = window.requestAnimationFrame(animate)
@@ -495,3 +486,17 @@ addEventListener('click', () => {
     clicked = true
   }
 })
+
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  player.position = {
+    x: (canvas.width / 2) - (192 / 4 / 2),
+    y: (canvas.height / 2) - (68 / 2)
+  };
+}
+
+window.addEventListener('resize', resizeCanvas);
+
