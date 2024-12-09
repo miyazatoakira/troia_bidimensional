@@ -12,8 +12,8 @@ for (let i = 0; i < collisions.length; i += 132) {
 const boundaries = []
 const offset = {
   // Modifica-lo afetará parâmetros, como posição inicial do player (Deslocamento)
-  x: -1005,
-  y: -5600
+  x: -605,
+  y: -5200
 }
 
 collisionsMap.forEach((row, i) => {
