@@ -6,15 +6,15 @@ canvas.height = window.innerHeight;
 
 
 const collisionsMap = []
-for (let i = 0; i < collisions.length; i += 100) {
-  collisionsMap.push(collisions.slice(i, 100 + i))
+for (let i = 0; i < collisions.length; i += 132) {
+  collisionsMap.push(collisions.slice(i, 132 + i))
 }
 
 const boundaries = []
 const offset = {
   // Modifica-lo afetará parâmetros, como posição inicial do player (Deslocamento)
-  x: -405,
-  y: -4700
+  x: -1005,
+  y: -5600
 }
 
 collisionsMap.forEach((row, i) => {
