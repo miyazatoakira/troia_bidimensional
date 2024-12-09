@@ -173,7 +173,7 @@ collisionsMap.forEach((row, i) => {
           },
           image: sacerdoteImg,
           frames: {
-            max: 3,
+            max: 4,
             hold: 120
           },
           scale: 3,
