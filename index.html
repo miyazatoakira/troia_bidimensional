@@ -1,207 +1,234 @@
 <html lang="pt-br">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            * {
+                font-family: 'Press Start 2P', cursive;
+                box-sizing: border-box;
+            }
 
-<head>
-  <meta charset="UTF-8">
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
-  <style>
-    * {
-      font-family: 'Press Start 2P', cursive;
-      box-sizing: border-box;
-    }
+            body {
+                background-color: black;
+                overflow: hidden;
+            }
 
-    body {
-      background-color: black;
-      overflow: hidden;
-    }
+            h1 {
+                margin: 0;
+            }
 
-    h1 {
-      margin: 0;
-    }
+            br {
+                margin: 0;
+                padding: 0;
+                line-height: normal;
+            }
 
-    button {
-      border: 0;
-      cursor: pointer;
-      font-size: 16px;
-    }
+            button {
+                border: 0;
+                cursor: pointer;
+                font-size: 16px;
+            }
 
-    button:hover {
-      background-color: #ddd;
-    }
+            button:hover {
+                background-color: #ddd;
+            }
 
+            /* From Uiverse.io by Cevorob */
+            #help {
+                position: relative;
+                height: 50px;
+                width: 40px;
+                padding: 0 30px;
+                border: 2px solid #000;
+                background: #e8e8e8;
+                user-select: none;
+                white-space: nowrap;
+                transition: all 0.05s linear;
+                font-family: inherit;
+            }
 
-    /* From Uiverse.io by Cevorob */
-    #help {
-      position: relative;
-      height: 50px;
-      width: 40px;
+            #help:before,
+            #help:after {
+                content: '';
+                position: absolute;
+                background: #e8e8e8;
+                transition: all 0.2s linear;
+            }
 
-      padding: 0 30px;
-      border: 2px solid #000;
-      background: #e8e8e8;
-      user-select: none;
-      white-space: nowrap;
-      transition: all .05s linear;
-      font-family: inherit;
-    }
+            #help:before {
+                width: calc(100% + 6px);
+                height: calc(100% - 16px);
+                top: 8px;
+                left: -3px;
+            }
 
-    #help:before,
-    #help:after {
-      content: "";
-      position: absolute;
-      background: #e8e8e8;
-      transition: all .2s linear;
-    }
+            #help:after {
+                width: calc(100% - 16px);
+                height: calc(100% + 6px);
+                top: -3px;
+                left: 8px;
+            }
 
-    #help:before {
-      width: calc(100% + 6px);
-      height: calc(100% - 16px);
-      top: 8px;
-      left: -3px;
-    }
+            #help:hover {
+                cursor: crosshair;
+            }
 
-    #help:after {
-      width: calc(100% - 16px);
-      height: calc(100% + 6px);
-      top: -3px;
-      left: 8px;
-    }
+            #help:active {
+                transform: scale(0.95);
+            }
 
-    #help:hover {
-      cursor: crosshair;
-    }
+            #help:hover:before {
+                height: calc(100% - 32px);
+                top: 16px;
+            }
 
-    #help:active {
-      transform: scale(0.95);
-    }
+            #help:hover:after {
+                width: calc(100% - 32px);
+                left: 16px;
+            }
 
-    #help:hover:before {
-      height: calc(100% - 32px);
-      top: 16px;
-    }
+            #help span {
+                font-size: 15px;
+                z-index: 3;
+                position: relative;
+                font-weight: 600;
+                justify-content: center;
+                display: flex;
+            }
 
-    #help:hover:after {
-      width: calc(100% - 32px);
-      left: 16px;
-    }
+            strong {
+                height: 1rem;
+                position: absolute;
+            }
+        </style>
+    </head>
 
-    #help span {
-      font-size: 15px;
-      z-index: 3;
-      position: relative;
-      font-weight: 600;
-      justify-content: center;
-      display: flex;
-    }
-  </style>
-</head>
+    <div style="display: inline-block; position: relative">
+        <div
+            id="overlappingDiv"
+            style="
+                background-color: black;
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                opacity: 0;
+                pointer-events: none;
+                z-index: 10;
+            "
+        ></div>
 
-<div style="display: inline-block; position: relative">
-  <div id="overlappingDiv" style="
-      background-color: black;
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      opacity: 0;
-      pointer-events: none;
-      z-index: 10;
-    ">
-  </div>
+        <div
+            id="commands"
+            style="
+                position: absolute;
+                top: 2%;
+                left: 1%;
+                color: white;
+                z-index: 10;
+            "
+        >
+            <button id="help">
+                <span> W </span>
+            </button>
+            <button id="help">
+                <span> A </span>
+            </button>
+            <button id="help">
+                <span> S </span>
+            </button>
+            <button id="help">
+                <span> D </span>
+            </button>
+            <h4 style="margin-left: 38%">MOVER</h4>
+        </div>
 
-  <div id="commands" style="position: absolute;
-  top: 2%;
-  left: 1%;
-  color: white;
-  z-index: 10;">
-    <button id="help">
-      <span> W
-      </span>
-    </button>
-    <button id="help">
-      <span> A
-      </span>
-    </button>
-    <button id="help">
-      <span> S
-      </span>
-    </button>
-    <button id="help">
-      <span> D
-      </span>
-    </button>
-    <h4 style="margin-left: 38%;">MOVER</h4>
+        <div
+            id="interactCommands"
+            style="
+                position: absolute;
+                top: 2%;
+                right: 1%;
+                color: white;
+                z-index: 10;
+            "
+        >
+            <button id="help" style="width: 100px">
+                <span> Space </span>
+            </button>
+            <h4 style="margin-left: -15%">INTERAGIR</h4>
+        </div>
 
-  </div>
+        <canvas></canvas>
+        <div
+            id="characterDialogueBox"
+            style="
+                background-color: white;
+                height: 180px;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                border-top: 4px black solid;
+                display: none;
+                padding: 12px;
+            "
+        ></div>
 
-  <div id="interactCommands" style="position: absolute; 
-  top: 2%; 
-  right: 1%; 
-  color: white; 
-  z-index: 10;">
-  <button id="help" style="width: 100px;">
-    <span> Space </span>
-  </button>
-  <h4 style="margin-left: -15%;">INTERAGIR</h4>
-</div>
-
-
-
-
-  <canvas></canvas>
-  <div id="characterDialogueBox" style="
-      background-color: white;
-      height: 140px;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      border-top: 4px black solid;
-      display: none;
-      padding: 12px;
-    "></div>
-
-  <div id="userInterface" style="display: none">
-
-    <div style="
-        background-color: white;
-        height: 140px;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        border-top: 4px black solid;
-        display: flex;
-      ">
-      <div id="dialogueBox" style="
-          position: absolute;
-          top: 0;
-          right: 0;
-          bottom: 0;
-          left: 0;
-          background-color: white;
-          padding: 12px;
-          display: none;
-          cursor: pointer;
-        ">
-        sdkfjlsdajl
-      </div>
-
-
+        <div id="userInterface" style="display: none">
+            <div
+                style="
+                    background-color: white;
+                    height: 140px;
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    border-top: 4px black solid;
+                    display: flex;
+                "
+            >
+                <div
+                    id="dialogueBox"
+                    style="
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        bottom: 0;
+                        left: 0;
+                        background-color: white;
+                        padding: 12px;
+                        display: none;
+                        cursor: pointer;
+                    "
+                >
+                    sdkfjlsdajl
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"
-  integrity="sha512-6+YN/9o9BWrk6wSfGxQGpt3EUK6XeHi6yeHV+TYD2GR0Sj/cggRpXr1BrAQf0as6XslxomMUxXp2vIl+fv0QRA=="
-  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"
-  integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ=="
-  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="data/audio.js"></script>
-<script src="data/collisions.js"></script>
-<script src="data/characters.js"></script>
-<script src="js/utils.js"></script>
-<script src="classes.js"></script>
-<script src="index.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"
+        integrity="sha512-6+YN/9o9BWrk6wSfGxQGpt3EUK6XeHi6yeHV+TYD2GR0Sj/cggRpXr1BrAQf0as6XslxomMUxXp2vIl+fv0QRA=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+    ></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"
+        integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+    ></script>
+    <script src="data/audio.js"></script>
+    <script src="data/collisions.js"></script>
+    <script src="data/characters.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="classes.js"></script>
+    <script src="index.js"></script>
+</html>

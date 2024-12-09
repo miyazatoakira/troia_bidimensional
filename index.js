@@ -1,9 +1,8 @@
 const canvas = document.querySelector('canvas')
 const c = canvas.getContext('2d')
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
+canvas.width = window.innerWidth
+canvas.height = window.innerHeight
 
 const collisionsMap = []
 for (let i = 0; i < collisions.length; i += 132) {
@@ -32,25 +31,27 @@ collisionsMap.forEach((row, i) => {
   })
 })
 
-
 const characters = []
-const villagerImg = new Image();
-villagerImg.src = './img/villager/Idle.png';
+const villagerImg = new Image()
+villagerImg.src = './img/villager/Idle.png'
 
-const oldManImg = new Image();
-oldManImg.src = './img/oldMan/Idle.png';
+const oldManImg = new Image()
+oldManImg.src = './img/oldMan/Idle.png'
 
-const ferreiroImg = new Image();
-ferreiroImg.src = './img/ferreiro/ferreiro.png';
+const ferreiroImg = new Image()
+ferreiroImg.src = './img/ferreiro/ferreiro.png'
 
-const militarImg = new Image();
-militarImg.src = './img/militar/militar.png';
+const militarImg = new Image()
+militarImg.src = './img/militar/militar.png'
 
-// const faroImg = new Image();
-// faroImg.src = './img/faro/faro.png';
+const mercadorImg = new Image()
+mercadorImg.src = './img/faro/mercador.png'
 
-const artesaoImg = new Image();
-artesaoImg.src = './img/artesao/Idle.png';
+const artesaoImg = new Image()
+artesaoImg.src = './img/artesao/Idle.png'
+
+const sacerdoteImg = new Image()
+sacerdoteImg.src = './img/faro/sacerdote.png'
 
 collisionsMap.forEach((row, i) => {
   row.forEach((symbol, j) => {
@@ -69,7 +70,13 @@ collisionsMap.forEach((row, i) => {
           },
           scale: 3,
           animate: true,
-          dialogue: ['...', 'Ei, forasteiro ! O que faz aqui, hein ?', 'Deixe-me adivinhar, você é Heleno?<br><br> Veio admirar nossa cidade porque nunca viu algo tão grandioso na sua terra miserável ?', 'Não está pensando em trazer outro "presente" como aquele cavalo ridículo ?<br><br> Pois fique sabendo que, desta vez, nem chegaria à praça ! Aqui é Tróia, meu caro hahahahaha', 'Vai conhecer a cidade ? Ótimo, só não se perca nos mercados nem tente subir a Acrópole sem permissão. Se passar pelo templo de Atena, baixe a cabeça e mostre respeito, ou até os deuses vão rir de você.']
+          dialogue: [
+            '<strong>Troiano:</strong><br><br>...',
+            '<strong>Troiano:</strong><br><br>Ei, forasteiro ! O que faz aqui, hein ?',
+            '<strong>Troiano:</strong><br><br>Deixe-me adivinhar, você é Heleno?<br><br> Veio admirar nossa cidade porque nunca viu algo tão grandioso na sua terra miserável ?',
+            '<strong>Troiano:</strong><br><br>Não está pensando em trazer outro "presente" como aquele cavalo ridículo ?<br><br> Pois fique sabendo que, desta vez, nem chegaria à praça ! Aqui é Tróia, meu caro hahahahaha',
+            '<strong>Troiano:</strong><br><br>Vai conhecer a cidade ? Ótimo, só não se perca nos mercados nem tente subir a Acrópole sem permissão. Se passar pelo templo de Atena, baixe a cabeça e mostre respeito, ou até os deuses vão rir de você.'
+          ]
         })
       )
     }
@@ -87,7 +94,11 @@ collisionsMap.forEach((row, i) => {
             hold: 60
           },
           scale: 3,
-          dialogue: ['Ah, bem-vindo jovem Heleno. Vejo que veio conhecer a grandiosa Tróia. Permita-me guiá-lo com minhas palavras, pois estes caminhos têm história que poucos podem contar. <br><br> Comece pela praça central, onde o mercado está sempre vivo - ali você verá o coração do nosso povo.', 'Depois, siga para a direção Norte da cidade, onde estará a acrópole da cidade. Lá, no ponto mais alto da cidade, você verá a residência do rei e o verdadeiro símbolo da nossa força. É um lugar que faz até o mais forte lembrar dos deuses.', 'Tróia é mais do que uma cidade, jovem. É um testemunho de resistência e grandeza. <br><br>Que seus passos por aqui sejam leves e suas memórias, eternas !']
+          dialogue: [
+            '<strong>Idoso:</strong><br><br>Ah, bem-vindo jovem Heleno. Vejo que veio conhecer a grandiosa Tróia. Permita-me guiá-lo com minhas palavras, pois estes caminhos têm história que poucos podem contar. <br><br> Comece pela praça central, onde o mercado está sempre vivo - ali você verá o coração do nosso povo.',
+            '<strong>Idoso:</strong><br><br>Depois, siga para a direção Norte da cidade, onde estará a acrópole da cidade. <br><br>Lá, no ponto mais alto da cidade, você verá a residência do rei e o verdadeiro símbolo da nossa força. É um lugar que faz até o mais forte lembrar dos deuses.',
+            '<strong>Idoso:</strong><br><br>Tróia é mais do que uma cidade, jovem. É um testemunho de resistência e grandeza. <br><br>Que seus passos por aqui sejam leves e suas memórias, eternas !'
+          ]
         })
       )
     }
@@ -106,7 +117,10 @@ collisionsMap.forEach((row, i) => {
             hold: 60
           },
           scale: 3,
-          dialogue: ['hihia, sou ferreiro']
+          dialogue: [
+            '<strong>Ferreiro:</strong><br><br> Ah, um jovem Heleno! Seja bem-vindo à minha forja. Aqui o aço ganha forma, e o bronze vira lenda nas mãos de guerreiros e viajantes.',
+            '<strong>Ferreiro:</strong><br><br> '
+          ]
         })
       )
     }
@@ -123,32 +137,55 @@ collisionsMap.forEach((row, i) => {
             max: 4,
             hold: 297
           },
-          animate:true,
           scale: 3,
-          dialogue: ['...', 'Olá Heleno.']
+          dialogue: [
+            '<strong>Militar Troiano:</strong><br><br>...',
+            '<strong>Militar Troiano:</strong><br><br>Olá Heleno.'
+          ]
         })
       )
     }
-    // 1070 == Faro
-    // else if (symbol === 1070) {
-    //   characters.push(
-    //     new Character({
-    //       position: {
-    //         x: j * Boundary.width + offset.x,
-    //         y: i * Boundary.height + offset.y
-    //       },
-    //       image: faroImg,
-    //       frames: {
-    //         max: 4,
-    //         hold: 60
-    //       },
-    //       scale: 3,
-    //       dialogue: ['hihia, sou faro !']
-    //     })
-    //   )
-    // }
+
+    // 1070 == Mercador
+    else if (symbol === 1070) {
+      characters.push(
+        new Character({
+          position: {
+            x: j * Boundary.width + offset.x,
+            y: i * Boundary.height + offset.y
+          },
+          image: mercadorImg,
+          frames: {
+            max: 4,
+            hold: 60
+          },
+          scale: 3,
+          dialogue: ['']
+        })
+      )
+      // Sacerdote == 1071
+    } else if (symbol === 1071) {
+      characters.push(
+        new Character({
+          position: {
+            x: j * Boundary.width + offset.x,
+            y: i * Boundary.height + offset.y
+          },
+          image: sacerdoteImg,
+          frames: {
+            max: 3,
+            hold: 120
+          },
+          scale: 3,
+          dialogue: [
+            '<strong>Laocoonte:</strong><br><br>....',
+            '<strong>Laocoonte:</strong><br><br>.'
+          ]
+        })
+      )
+    }
     // 1099 == Artesão
-    else if(symbol === 1099){
+    else if (symbol === 1099) {
       characters.push(
         new Character({
           position: {
@@ -161,7 +198,12 @@ collisionsMap.forEach((row, i) => {
             hold: 60
           },
           scale: 3,
-          dialogue: ['hihia, sou Vendedor artesão !']
+          dialogue: [
+            '<strong>Artesão:</strong><br><br> Ah, jovem Alexios! Seja bem-vindo ao mercado de Troia! Vejo que os ventos do Helesponto o trouxeram com segurança. Em que posso servi-lo hoje? Temos os melhores tecidos da região, dignos até de reis!',
+            '<strong>Artesão:</strong><br><br> Aqui em Troia VI, somos famosos por nossa lã macia, obtida das ovelhas que pastam nos campos férteis da Trôade. <br><br> Veja este manto vermelho tingido com púrpura de múrice. A cor é rica e vibrante, símbolo de nobreza. Não há tecido que desperte mais inveja entre os chefes!',
+            '<strong>Artesão:</strong><br><br> Ah, o linho troiano é famoso em toda a região! Cultivado perto do rio Escamandro, é tecido com habilidade pelas mulheres locais. Leve e fresco, perfeito para os verões escaldantes. Veja esta túnica branca, lisa como a água corrente.<br><br> Também temos peças bordadas com padrões geométricos, uma influência dos nossos contatos com os minoicos de Creta.',
+            '<strong>Artesão:</strong><br><br> Escolha com sabedoria, rapaz! Um bom tecido pode ser um companheiro fiel em suas jornadas ou um presente digno dos salões de Micenas. Troia está sempre pronta para atender aqueles que apreciam qualidade e tradição!'
+          ]
         })
       )
     }
@@ -199,8 +241,8 @@ playerRightImage.src = './img/playerRight.png'
 
 const player = new Sprite({
   position: {
-    x: (canvas.width / 2) - (192 / 4 / 2),
-    y: (canvas.height / 2) - (68 / 2)
+    x: canvas.width / 2 - 192 / 4 / 2,
+    y: canvas.height / 2 - 68 / 2
   },
   image: playerDownImage,
   frames: {
@@ -213,8 +255,7 @@ const player = new Sprite({
     right: playerRightImage,
     down: playerDownImage
   }
-});
-
+})
 
 const background = new Sprite({
   position: {
@@ -247,12 +288,7 @@ const keys = {
   }
 }
 
-const movables = [
-  background,
-  ...boundaries,
-  foreground,
-  ...characters
-]
+const movables = [background, ...boundaries, foreground, ...characters]
 const renderables = [
   background,
   ...boundaries,
@@ -260,7 +296,6 @@ const renderables = [
   player,
   foreground
 ]
-
 
 function animate() {
   const animationId = window.requestAnimationFrame(animate)
@@ -487,16 +522,14 @@ addEventListener('click', () => {
   }
 })
 
-
 function resizeCanvas() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+  canvas.width = window.innerWidth
+  canvas.height = window.innerHeight
 
   player.position = {
-    x: (canvas.width / 2) - (192 / 4 / 2),
-    y: (canvas.height / 2) - (68 / 2)
-  };
+    x: canvas.width / 2 - 192 / 4 / 2,
+    y: canvas.height / 2 - 68 / 2
+  }
 }
 
-window.addEventListener('resize', resizeCanvas);
-
+window.addEventListener('resize', resizeCanvas)
