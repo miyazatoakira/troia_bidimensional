@@ -13,7 +13,7 @@ const boundaries = []
 const offset = {
   // Modifica-lo afetará parâmetros, como posição inicial do player (Deslocamento)
   x: -605,
-  y: -5200
+  y: -5600
 }
 
 collisionsMap.forEach((row, i) => {
@@ -53,10 +53,34 @@ artesaoImg.src = './img/artesao/Idle.png'
 const sacerdoteImg = new Image()
 sacerdoteImg.src = './img/faro/sacerdote.png'
 
+const timetesImg = new Image()
+timetesImg.src = './img/militar/timetes.png'
+
 collisionsMap.forEach((row, i) => {
   row.forEach((symbol, j) => {
+    // 1035 == Militar
+    if (symbol === 1035) {
+      characters.push(
+        new Character({
+          position: {
+            x: j * Boundary.width + offset.x,
+            y: i * Boundary.height + offset.y
+          },
+          image: militarImg,
+          frames: {
+            max: 4,
+            hold: 297
+          },
+          scale: 3,
+          dialogue: [
+            '<strong>Militar Troiano:</strong><br><br>...',
+            '<strong>Militar Troiano:</strong><br><br>Olá Heleno.'
+          ]
+        })
+      )
+    }
     // 1026 === villager
-    if (symbol === 1026) {
+    else if (symbol === 1026) {
       characters.push(
         new Character({
           position: {
@@ -119,28 +143,10 @@ collisionsMap.forEach((row, i) => {
           scale: 3,
           dialogue: [
             '<strong>Ferreiro:</strong><br><br> Ah, um jovem Heleno! Seja bem-vindo à minha forja. Aqui o aço ganha forma, e o bronze vira lenda nas mãos de guerreiros e viajantes.',
-            '<strong>Ferreiro:</strong><br><br> '
-          ]
-        })
-      )
-    }
-    // 1035 == Militar
-    else if (symbol === 1035) {
-      characters.push(
-        new Character({
-          position: {
-            x: j * Boundary.width + offset.x,
-            y: i * Boundary.height + offset.y
-          },
-          image: militarImg,
-          frames: {
-            max: 4,
-            hold: 297
-          },
-          scale: 3,
-          dialogue: [
-            '<strong>Militar Troiano:</strong><br><br>...',
-            '<strong>Militar Troiano:</strong><br><br>Olá Heleno.'
+            '<strong>Ferreiro:</strong><br><br> Veja esta espada de bronze, forjada com liga forte e resistente. O estanho veio das montanhas hititas, e o cobre dos portos do Chipre. Equilibrada, afiada e pronta para o combate — uma lâmina digna de quem busca glória nos campos de batalha.',
+            '<strong>Ferreiro:</strong><br><br> Se prefere algo para defesa, tenho escudos laminados com bronze, leves o bastante para manobrar, mas fortes o suficiente para repelir lanças e flechas.',
+            '<strong>Ferreiro:</strong><br><br> Não deixe de olhar também nossas pontas de lança e pás de arado. Troia não é só uma cidade de guerreiros, mas de agricultores e mercadores. <br><br>Forjamos tanto para a guerra quanto para a paz.',
+            '<strong>Ferreiro:</strong><br><br> Lembre-se: o segredo de uma boa arma não está apenas no metal, mas na alma daquele que a empunha. Escolha bem, rapaz, e que Hefesto guie seu caminho !'
           ]
         })
       )
@@ -161,26 +167,6 @@ collisionsMap.forEach((row, i) => {
           },
           scale: 3,
           dialogue: ['']
-        })
-      )
-      // Sacerdote == 1071
-    } else if (symbol === 1071) {
-      characters.push(
-        new Character({
-          position: {
-            x: j * Boundary.width + offset.x,
-            y: i * Boundary.height + offset.y
-          },
-          image: sacerdoteImg,
-          frames: {
-            max: 4,
-            hold: 120
-          },
-          scale: 3,
-          dialogue: [
-            '<strong>Laocoonte:</strong><br><br>....',
-            '<strong>Laocoonte:</strong><br><br>.'
-          ]
         })
       )
     }
@@ -208,6 +194,140 @@ collisionsMap.forEach((row, i) => {
       )
     }
 
+    // Sacerdote == 1071
+    else if (symbol === 1071) {
+      characters.push(
+        new Character({
+          position: {
+            x: j * Boundary.width + offset.x,
+            y: i * Boundary.height + offset.y
+          },
+          image: sacerdoteImg,
+          frames: {
+            max: 4,
+            hold: 240
+          },
+          animate: true,
+          scale: 3,
+          dialogue: [
+            '<strong>Laocoonte, o Sacerdote:</strong><br><br>....',
+            '<strong>Laocoonte, o Sacerdote:</strong><br><br> A ignorância cega até os mais sábios…<br><br> Eles acreditam que a guerra terminou apenas porque os navios partiram? Não veem que esta calma é o prelúdio da tempestade?',
+            '<strong>Laocoonte, o Sacerdote:</strong><br><br> Um presente dos gregos…<br><br>Como podem ser tão insensatos? Ulisses não conhece honra, apenas truques e ciladas.<br><br> Se ao menos ouvissem a voz da razão em vez dos sussurros da esperança…',
+            '<strong>Laocoonte, o Sacerdote:</strong><br><br> Eu os avisei. Há algo escondido ali. Eu ouvi a madeira gemer sob a lança.<br><br>Mesmo os deuses parecem surdos aos meus apelos. Será este o destino inevitável de Troia?<br><br> Que o orgulho e a ilusão a levem à ruína?',
+            '<strong>Laocoonte, o Sacerdote:</strong><br><br> Eles não escutam… e temo que em breve, tudo o que restará serão cinzas e lamentos.',
+            '<strong>Laocoonte, o Sacerdote:</strong><br><br> Quidquid id est, timeo Danaos et dona ferentes !<br><br> Tradução (latim): "Seja o que for, temo os gregos, mesmo quando trazem presentes!"'
+          ]
+        })
+      )
+    }
+    // 1061 == Militar Acrópole
+    else if (symbol == 1061) {
+      characters.push(
+        new Character({
+          position: {
+            x: j * Boundary.width + offset.x,
+            y: i * Boundary.height + offset.y
+          },
+          image: militarImg,
+          frames: {
+            max: 4,
+            hold: 297
+          },
+          scale: 3,
+          dialogue: [
+            '<strong>Militar Troiano:</strong><br><br>...',
+            '<strong>Militar Troiano:</strong><br><br> A Acrópole é a alma de Troia. Quem quiser profaná-la, terá que passar pela minha espada primeiro — e eu prometo, ela não será clemente.'
+          ]
+        })
+      )
+    }
+    // 1062 == Militar Acrópole
+    else if (symbol == 1062) {
+      characters.push(
+        new Character({
+          position: {
+            x: j * Boundary.width + offset.x,
+            y: i * Boundary.height + offset.y
+          },
+          image: militarImg,
+          frames: {
+            max: 4,
+            hold: 297
+          },
+          scale: 3,
+          dialogue: [
+            '<strong>Militar Troiano:</strong><br><br>...',
+            '<strong>Militar Troiano:</strong><br><br> Enquanto eu estiver de pé, nenhum invasor subirá estas escadas. Que os deuses guiem meu braço e a honra de Troia proteja minhas costas.'
+          ]
+        })
+      )
+    }
+    // 1063 == Militar Acrópole
+    else if (symbol == 1063) {
+      characters.push(
+        new Character({
+          position: {
+            x: j * Boundary.width + offset.x,
+            y: i * Boundary.height + offset.y
+          },
+          image: militarImg,
+          frames: {
+            max: 4,
+            hold: 297
+          },
+          scale: 3,
+          dialogue: [
+            '<strong>Militar Troiano:</strong><br><br>...',
+            '<strong>Militar Troiano:</strong><br><br> Este solo é sagrado, este posto é minha vida. Se Troia deve cair, será sobre o meu corpo antes de tocar a Acrópole.'
+          ]
+        })
+      )
+    }
+    // 1064 == Militar Acrópole
+    else if (symbol == 1064) {
+      characters.push(
+        new Character({
+          position: {
+            x: j * Boundary.width + offset.x,
+            y: i * Boundary.height + offset.y
+          },
+          image: militarImg,
+          frames: {
+            max: 4,
+            hold: 297
+          },
+          scale: 3,
+          dialogue: [
+            '<strong>Militar Troiano:</strong><br><br>...',
+            '<strong>Militar Troiano:</strong><br><br> Aqui, na sombra dos deuses, sou o último bastião. Se o inimigo quiser tomar a Acrópole, que venha; enfrentará o aço e a ira de quem não conhece rendição.'
+          ]
+        })
+      )
+    }
+
+    // 1065 == Tímetes
+    else if (symbol == 1065) {
+      characters.push(
+        new Character({
+          position: {
+            x: j * Boundary.width + offset.x,
+            y: i * Boundary.height + offset.y
+          },
+          image: timetesImg,
+          frames: {
+            max: 4,
+            hold: 297
+          },
+          scale: 3,
+          dialogue: [
+            '<strong>Tímetes, Guerreiro Troiano:</strong><br><br> Troianos, vejam este presente! Não há mais guerra! Após tantos anos de sofrimento, os gregos finalmente se renderam. <br>Este cavalo imenso é um tributo à nossa grandeza e coragem!',
+            '<strong>Tímetes, Guerreiro Troiano:</strong><br><br> Não há dúvida, é claro como o sol! Os gregos reconhecem nossa força. <br>Ulisses e seus guerreiros, astutos como sempre, deixaram para trás este troféu.<br>O que mais poderiam nos dar, senão algo digno de nossa vitória?',
+            '<strong>Tímetes, Guerreiro Troiano:</strong><br><br> Este cavalo, grande e imponente, é a chave para nossa paz. <br>Levá-lo para dentro das muralhas é o passo final. Não há mais inimigos, apenas a vitória e o alívio!<br><br> O medo da guerra se foi, agora é hora de celebrarmos!',
+            '<strong>Tímetes, Guerreiro Troiano:</strong><br><br> "O que há a temer? Este cavalo é um presente dos deuses! <br>Vamos celebrar a nossa grandeza! <br><br><br><br>(Eneida, Livro II, de Virgílio)"'
+          ]
+        })
+      )
+    }
     if (symbol !== 0) {
       boundaries.push(
         new Boundary({
